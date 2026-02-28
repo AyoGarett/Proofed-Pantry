@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proofed Pantry</title>
+    <meta
+      name="description"
+      content="Proofed Pantry helps you go beyond the label with allergy risk clarity, seed oil tracking, recall history, and safety scoring."
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Top Bar -->
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="Proofed Pantry home">
+        <span class="logo" aria-hidden="true">PP</span>
+        <span>Proofed Pantry</span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#search">Search</a>
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact" class="nav-cta">Contact</a>
+      </nav>
+
+      <button class="menuBtn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+        ☰
+      </button>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobileMenu" id="mobileMenu" hidden>
+      <a href="#about">About</a>
+      <a href="#search">Search</a>
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <main id="home">
+      <!-- Hero -->
+       
+      <section class="hero">
+        <div class="heroText">
+          <div class="pill">Beyond-the-label food clarity</div>
+          <h1>Know what labels don’t tell you.</h1>
+          <p>
+            Proofed Pantry helps you make safer choices with a clear safety score,
+            “may contain” risk clarity, seed oil flags, and recall history — in one clean view.
+          </p>
+
+          <div class="heroActions">
+            <a class="btn primary" href="#pricing">See pricing</a>
+            <a class="btn" href="#services">Explore features</a>
+          </div>
+
+          <div class="trustRow">
+            <div class="trustItem">
+              <div class="trustNum">Safety</div>
+              <div class="trustLabel">score & risk notes</div>
+            </div>
+            <div class="trustItem">
+              <div class="trustNum">Seed oils</div>
+              <div class="trustLabel">presence tracking</div>
+            </div>
+            <div class="trustItem">
+              <div class="trustNum">Recalls</div>
+              <div class="trustLabel">history & frequency</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="heroCard" aria-label="Example card">
+          <div class="cardTop">
+            <div>
+              <div class="cardTitle">Example Product</div>
+              <div class="cardSub">Snack • 1.8 oz</div>
+            </div>
+            <div class="scoreBadge" title="Example Safety Score">
+              <span class="scoreNum">87</span>
+              <span class="scoreWord">Safe</span>
+            </div>
+          </div>
+
+          <div class="cardGrid">
+            <div class="mini">
+              <div class="miniLabel">“May contain” risk</div>
+              <div class="miniValue">Low</div>
+              <div class="miniHint">Based on facility & evidence</div>
+            </div>
+            <div class="mini">
+              <div class="miniLabel">Seed oils</div>
+              <div class="miniValue">Flagged</div>
+              <div class="miniHint">Contains: canola, soybean</div>
+            </div>
+            <div class="mini">
+              <div class="miniLabel">Recall history</div>
+              <div class="miniValue">None</div>
+              <div class="miniHint">No recalls in last 5 years</div>
+            </div>
+            <div class="mini">
+              <div class="miniLabel">Allergens</div>
+              <div class="miniValue">Peanut-free</div>
+              <div class="miniHint">Check cross-contact notes</div>
+            </div>
+          </div>
+
+          <div class="cardFooter">
+            <div class="smallNote">Preview only. Premium unlocks full breakdown + alerts.</div>
+            <a class="link" href="#pricing">Unlock Premium →</a>
+          </div>
+        </div>
+      </section>
+<!-- Search -->
+<section id="search" class="section">
+  <div class="sectionHead">
+    <h2>Search</h2>
+    <p>Search by product, brand, or manufacturer. Click a result to view details.</p>
+  </div>
+
+  <div class="searchApp">
+    <div class="searchRow">
+      <div class="searchInputWrap">
+        <span class="searchIcon" aria-hidden="true">🔎</span>
+        <input
+          id="searchInput"
+          type="text"
+          placeholder="Search product, brand, or manufacturer…"
+          autocomplete="off"
+        />
+        <button class="clearBtn" id="clearBtn" type="button" aria-label="Clear search" hidden>
+          ✕
+        </button>
+      </div>
+
+      <button class="btn primary" id="searchBtn" type="button">Search</button>
+    </div>
+
+    <div class="controlsRow">
+      <div class="chips" aria-label="Match field">
+        <button class="chip active" type="button" data-filter="all">All fields</button>
+        <button class="chip" type="button" data-filter="product">Product</button>
+        <button class="chip" type="button" data-filter="brand">Brand</button>
+        <button class="chip" type="button" data-filter="manufacturer">Manufacturer</button>
+      </div>
+
+      <div class="rightControls">
+        <label class="selectLabel">
+          Sort
+          <select id="sortSelect">
+            <option value="relevance" selected>Relevance</option>
+            <option value="scoreDesc">Safety score (high → low)</option>
+            <option value="scoreAsc">Safety score (low → high)</option>
+            <option value="nameAsc">Name (A → Z)</option>
+          </select>
+        </label>
+      </div>
+    </div>
+
+    <div class="searchCount" id="searchCount"></div>
+    <div class="results" id="results" aria-live="polite"></div>
+  </div>
+</section>
+      <!-- About -->
+      <section id="about" class="section">
+        <div class="sectionHead">
+          <h2>About Proofed Pantry</h2>
+          <p>
+            Food labels are necessary — but not always enough. “May contain” can mean anything from
+            “shared facility” to “high risk.” We make that uncertainty clearer with structured risk signals.
+          </p>
+        </div>
+
+        <div class="cards3">
+          <div class="card">
+            <h3>Clarity</h3>
+            <p>Turn vague warnings into a simple safety score and plain-English notes.</p>
+          </div>
+          <div class="card">
+            <h3>Transparency</h3>
+            <p>Track seed oils, ingredient red flags, and recall patterns across brands.</p>
+          </div>
+          <div class="card">
+            <h3>Control</h3>
+            <p>Set personal filters and alerts so you don’t have to research every time.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services / Features -->
+      <section id="services" class="section">
+        <div class="sectionHead">
+          <h2>Services</h2>
+          <p>What Proofed Pantry can do for you (free + premium).</p>
+        </div>
+
+        <div class="featureGrid">
+          <div class="feature">
+            <div class="icon">🛡️</div>
+            <div>
+              <h3>Safety Score</h3>
+              <p>A quick score that summarizes risk, uncertainty, and known signals.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="icon">🔎</div>
+            <div>
+              <h3>“May Contain” Reality Check</h3>
+              <p>Separate cautious legal wording from meaningful risk indicators.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="icon">🌿</div>
+            <div>
+              <h3>Seed Oil Tracking</h3>
+              <p>See if a product contains seed oils and which ones are present.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="icon">📌</div>
+            <div>
+              <h3>Recall History</h3>
+              <p>View recall frequency and category trends by brand and product line.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="icon">🔔</div>
+            <div>
+              <h3>Alerts (Premium)</h3>
+              <p>Get notified about recalls, ingredient changes, or risk score shifts.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="icon">⚙️</div>
+            <div>
+              <h3>Personal Filters (Premium)</h3>
+              <p>Set your allergens and “avoid list” so results are tailored to you.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ads Space -->
+      <section class="section">
+        <div class="adBox" role="note" aria-label="Advertisement placeholder">
+          <div class="adLabel">Ad Space</div>
+          <div class="adText">
+            This section is reserved for sponsored placements (ex: trusted brands, partner offers).
+          </div>
+        </div>
+      </section>
+
+      <!-- Pricing -->
+      <section id="pricing" class="section">
+        <div class="sectionHead">
+          <h2>Pricing</h2>
+          <p>Start free. Upgrade when you want the full picture.</p>
+        </div>
+
+        <div class="pricing">
+          <div class="priceCard">
+            <div class="priceTop">
+              <h3>Free</h3>
+              <div class="price">$0</div>
+              <div class="priceSub">Baseline clarity</div>
+            </div>
+            <ul class="list">
+              <li>Basic safety score</li>
+              <li>Limited “may contain” notes</li>
+              <li>Seed oil flag (yes/no)</li>
+              <li>Recent recall snapshot</li>
+              <li>Ads supported</li>
+            </ul>
+            <a class="btn" href="#contact">Join waitlist</a>
+          </div>
+
+          <div class="priceCard featured" aria-label="Premium plan">
+            <div class="ribbon">Most Popular</div>
+            <div class="priceTop">
+              <h3>Premium</h3>
+              <div class="price">$9<span class="per">/mo</span></div>
+              <div class="priceSub">Full transparency + alerts</div>
+            </div>
+            <ul class="list">
+              <li>Full safety score breakdown</li>
+              <li>Detailed cross-contact risk signals</li>
+              <li>Seed oils: which + why flagged</li>
+              <li>Recall history + frequency insights</li>
+              <li>Personal filters & “avoid list”</li>
+              <li>Alerts for recalls/changes</li>
+              <li>Reduced ads</li>
+            </ul>
+            <a class="btn primary" href="#contact">Get Premium</a>
+            <div class="smallNote">Pricing is placeholder — we’ll set it later.</div>
+          </div>
+
+          <div class="priceCard">
+            <div class="priceTop">
+              <h3>Business</h3>
+              <div class="price">$49<span class="per">/mo</span></div>
+              <div class="priceSub">For brands & teams</div>
+            </div>
+            <ul class="list">
+              <li>Portfolio monitoring</li>
+              <li>Recall + risk dashboards</li>
+              <li>Exportable reports</li>
+              <li>Priority support</li>
+              <li>Partner ad options</li>
+            </ul>
+            <a class="btn" href="#contact">Talk to us</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="section">
+        <div class="sectionHead">
+          <h2>FAQ</h2>
+          <p>Common questions (we can rewrite these to match your exact approach).</p>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>Is Proofed Pantry a medical service?</summary>
+            <p>
+              No. We provide informational signals to help people make decisions.
+              For medical guidance, always consult a qualified professional.
+            </p>
+          </details>
+
+          <details>
+            <summary>How do you decide the “may contain” risk?</summary>
+            <p>
+              We combine product context, facility/manufacturing signals when available,
+              recall patterns, and other evidence to express a clearer risk estimate.
+            </p>
+          </details>
+
+          <details>
+            <summary>Do you cover all allergens?</summary>
+            <p>
+              The goal is broad allergen coverage with customizable personal filters.
+              We’ll prioritize the most common allergens first.
+            </p>
+          </details>
+
+          <details>
+            <summary>Why track seed oils?</summary>
+            <p>
+              Some users want to avoid certain oils for personal preference.
+              We make it easy to identify when they’re present.
+            </p>
+          </details>
+
+          <details>
+            <summary>Can I advertise on Proofed Pantry?</summary>
+            <p>
+              Yes — we plan to offer ad slots and partner placements.
+              Use the contact form to reach out.
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="section">
+        <div class="sectionHead">
+          <h2>Contact</h2>
+          <p>Send a message. This form validates and shows a success message (no backend yet).</p>
+        </div>
+
+        <form class="contact" id="contactForm">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required />
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required />
+          </div>
+
+          <div class="field">
+            <label for="topic">Topic</label>
+            <select id="topic" name="topic" required>
+              <option value="" disabled selected>Select one</option>
+              <option>General</option>
+              <option>Premium</option>
+              <option>Advertising</option>
+              <option>Partnership</option>
+              <option>Press</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              placeholder="Tell us what you need..."
+              required
+            ></textarea>
+          </div>
+
+          <button class="btn primary" type="submit">Send message</button>
+          <p class="formNote" id="formNote" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footerInner">
+        <div class="footerBrand">
+          <span class="logo sm" aria-hidden="true">PP</span>
+          <div>
+            <div class="footerName">Proofed Pantry</div>
+            <div class="footerTag">Clean, health-conscious food transparency.</div>
+          </div>
+        </div>
+
+        <div class="footerLinks">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <div class="footerCopy">© <span id="year"></span> Proofed Pantry</div>
+      </div>
+    </footer>
+<!-- Product Details Modal -->
+<div class="modalOverlay" id="modalOverlay" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modalTop">
+      <div>
+        <div class="modalTitle" id="modalTitle">Product</div>
+        <div class="modalSub" id="modalSub">Brand • Manufacturer</div>
+      </div>
+      <button class="modalClose" id="modalClose" aria-label="Close">✕</button>
+    </div>
+
+    <div class="modalBody">
+      <!-- Quick summary cards -->
+      <div class="modalGrid">
+        <div class="modalBox">
+          <div class="k">Safety score</div>
+          <div class="v" id="modalScore">—</div>
+          <div class="h" id="modalScoreHint">—</div>
+        </div>
+        <div class="modalBox">
+          <div class="k">“May contain” risk</div>
+          <div class="v" id="modalMayContain">—</div>
+          <div class="h" id="modalMayContainHint">—</div>
+        </div>
+        <div class="modalBox">
+          <div class="k">Seed oils</div>
+          <div class="v" id="modalSeedOils">—</div>
+          <div class="h" id="modalSeedOilsHint">—</div>
+        </div>
+        <div class="modalBox">
+          <div class="k">Recall history</div>
+          <div class="v" id="modalRecalls">—</div>
+          <div class="h" id="modalRecallsHint">—</div>
+        </div>
+      </div>
+
+      <!-- Two-column product page layout -->
+      <div class="productLayout">
+        <!-- Left column -->
+        <div class="productMain">
+          <div class="panel">
+            <div class="panelTop">
+              <div class="panelTitle">Ingredients</div>
+              <div class="panelHint">Listed ingredients (demo). Seed oils are highlighted.</div>
+            </div>
+            <div class="ingredients" id="modalIngredients"></div>
+          </div>
+
+          <div class="panel">
+            <div class="panelTop">
+              <div class="panelTitle">Allergen matrix</div>
+              <div class="panelHint">A clearer view than “may contain” alone (demo).</div>
+            </div>
+            <div class="allergenLegend">
+              <span class="legendItem ok">Free from</span>
+              <span class="legendItem warn">May contain</span>
+              <span class="legendItem bad">Contains</span>
+              <span class="legendItem unk">Unknown</span>
+            </div>
+            <div class="allergenGrid" id="modalAllergens"></div>
+          </div>
+        </div>
+
+        <!-- Right column -->
+        <aside class="productSide">
+          <div class="panel">
+            <div class="panelTop">
+              <div class="panelTitle">Manufacturer & facility history</div>
+              <div class="panelHint">Timeline-style signals (demo).</div>
+            </div>
+            <div class="timeline" id="modalFacility"></div>
+          </div>
+
+          <div class="panel">
+            <div class="panelTop">
+              <div class="panelTitle">Report an issue</div>
+              <div class="panelHint">Help improve accuracy and safety signals.</div>
+            </div>
+
+            <form class="reportForm" id="reportForm">
+              <input type="hidden" id="reportProductId" />
+
+              <div class="field">
+                <label for="reportType">Issue type</label>
+                <select id="reportType" required>
+                  <option value="" disabled selected>Select one</option>
+                  <option>Incorrect ingredients</option>
+                  <option>Allergen info incorrect</option>
+                  <option>Recall info missing/incorrect</option>
+                  <option>Seed oil flag incorrect</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="reportDetails">Details</label>
+                <textarea id="reportDetails" rows="4" placeholder="What did you notice?" required></textarea>
+              </div>
+
+              <div class="field">
+                <label for="reportEmail">Email (optional)</label>
+                <input id="reportEmail" type="email" placeholder="you@example.com" />
+              </div>
+
+              <button class="btn primary" type="submit">Submit report</button>
+              <p class="formNote" id="reportNote" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+        </aside>
+      </div>
+
+      <div class="modalActions">
+        <a class="btn" href="#pricing">View pricing</a>
+        <a class="btn primary" href="#contact">Contact us</a>
+      </div>
+    </div>
+  </div>
+</div>
