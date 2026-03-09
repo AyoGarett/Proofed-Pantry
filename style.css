@@ -61,6 +61,8 @@ main {
   text-decoration: none;
   font-weight: 800;
   letter-spacing: 0.2px;
+  font-size: 24px;
+
 }
 
 .logo {
@@ -140,7 +142,7 @@ main {
 /* Hero */
 .hero {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: 1fr;
   gap: 18px;
   align-items: stretch;
   margin-top: 18px;
@@ -905,67 +907,6 @@ textarea { resize: vertical; }
   color: var(--muted);
 }
 
-/* Allergen matrix */
-.allergenLegend{
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 10px;
-}
-
-.legendItem{
-  font-size: 12px;
-  font-weight: 900;
-  padding: 6px 10px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-}
-
-.legendItem.ok{ background: rgba(43, 182, 115, 0.10); color:#0b3a25; }
-.legendItem.warn{ background: rgba(255, 199, 0, 0.12); color:#6b5200; }
-.legendItem.bad{ background: rgba(255, 72, 72, 0.12); color:#7a0b0b; }
-.legendItem.unk{ background: rgba(15, 28, 22, 0.05); color: var(--muted); }
-
-.allergenGrid{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-}
-
-.allergenCard{
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 10px;
-  background: rgba(43, 182, 115, 0.06);
-}
-
-.allergenName{
-  font-weight: 1000;
-}
-
-.allergenStatus{
-  margin-top: 6px;
-  font-weight: 1000;
-  font-size: 12px;
-  display: inline-block;
-  padding: 6px 10px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-}
-
-.allergenStatus.ok{ background: rgba(43, 182, 115, 0.10); color:#0b3a25; }
-.allergenStatus.warn{ background: rgba(255, 199, 0, 0.12); color:#6b5200; }
-.allergenStatus.bad{ background: rgba(255, 72, 72, 0.12); color:#7a0b0b; }
-.allergenStatus.unk{ background: rgba(15, 28, 22, 0.05); color: var(--muted); }
-
-.allergenNote{
-  margin-top: 6px;
-  color: var(--muted);
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 1.35;
-}
-
 /* Facility timeline */
 .timeline{
   display: grid;
@@ -1012,4 +953,95 @@ textarea { resize: vertical; }
   .productLayout{ grid-template-columns: 1fr; }
   .panelHint{ text-align: left; }
   .allergenGrid{ grid-template-columns: 1fr; }
+}
+.heroPanel{
+  padding: 14px;
+}
+
+.productHero{
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 14px;
+  align-items: start;
+}
+
+.productImageWrap{
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: rgba(255,255,255,0.92);
+  padding: 12px;
+}
+
+.productImage{
+  width: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.productHeroInfo{
+  display: grid;
+  gap: 10px;
+}
+
+.metricGrid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.metricCard{
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 10px;
+  background: rgba(43, 182, 115, 0.06);
+}
+
+.metricName{
+  font-weight: 1000;
+  font-size: 13px;
+}
+
+.metricValue{
+  margin-top: 6px;
+  font-weight: 1000;
+  font-size: 15px;
+  color: #0b3a25;
+}
+
+.metricNote{
+  margin-top: 6px;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+@media (max-width: 900px){
+  .productHero{
+    grid-template-columns: 1fr;
+  }
+
+  .metricGrid{
+    grid-template-columns: 1fr;
+  }
+}
+body.modal-open{
+  overflow: hidden;
+}
+
+.modalOverlay{
+  overflow-y: auto;
+  align-items: start;
+}
+
+.modal{
+  width: min(920px, 100%);
+  max-height: calc(100vh - 36px);
+  display: flex;
+  flex-direction: column;
+}
+
+.modalBody{
+  padding: 16px;
+  overflow-y: auto;
 }

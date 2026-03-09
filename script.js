@@ -47,14 +47,6 @@ const modalOverlay = document.getElementById("modalOverlay");
 const modalClose = document.getElementById("modalClose");
 const modalTitle = document.getElementById("modalTitle");
 const modalSub = document.getElementById("modalSub");
-const modalScore = document.getElementById("modalScore");
-const modalScoreHint = document.getElementById("modalScoreHint");
-const modalMayContain = document.getElementById("modalMayContain");
-const modalMayContainHint = document.getElementById("modalMayContainHint");
-const modalSeedOils = document.getElementById("modalSeedOils");
-const modalSeedOilsHint = document.getElementById("modalSeedOilsHint");
-const modalRecalls = document.getElementById("modalRecalls");
-const modalRecallsHint = document.getElementById("modalRecallsHint");
 const modalList = document.getElementById("modalList");
 const modalIngredients = document.getElementById("modalIngredients");
 const modalAllergens = document.getElementById("modalAllergens");
@@ -65,81 +57,90 @@ const reportDetails = document.getElementById("reportDetails");
 const reportEmail = document.getElementById("reportEmail");
 const reportNote = document.getElementById("reportNote");
 const modalFacility = document.getElementById("modalFacility");
+const modalProductImage = document.getElementById("modalProductImage");
+const modalSnapshot = document.getElementById("modalSnapshot");
+const modalProcessing = document.getElementById("modalProcessing");
+const modalNutrition = document.getElementById("modalNutrition");
+const modalSafetyDetails = document.getElementById("modalSafetyDetails");
+const modalCompany = document.getElementById("modalCompany");
+const modalNews = document.getElementById("modalNews");
 // Demo products (replace with real data later)
 const PRODUCTS = [
   {
-    id: "gt-granola-bites",
-    productName: "Almond Butter Granola Bites",
-    brand: "GreenTrail",
-    manufacturer: "GreenTrail Foods Co.",
-    safetyScore: 87,
-    mayContainRisk: "Low",
-    mayContainWhy: "No recent cross-contact signals detected (demo).",
-    seedOils: "Flagged",
-    seedOilsWhy: "Contains canola and soybean oil (demo).",
-    recalls: "None",
-    recallsWhy: "No recalls found in the last 5 years (demo).",
+    id: "built-coconut-puff",
+    productName: "Coconut Puff",
+    brand: "BUILT",
+    manufacturer: "BUILT Brands, LLC",
+    image: "built-coconut-puff.png",
+    keywords: "protein bar protein puff coconut coconut puff built bar snack whey collagen",
+
     ingredients: [
-      "Rolled oats",
-      "Almond butter",
-      "Honey",
-      "Sea salt",
-      "Natural flavors",
-      "Canola oil",
-      "Soybean oil"
+      "Premium Collagen Protein Blend (Partially Hydrolyzed Whey Protein Isolate, Collagen)",
+      "Glycerin",
+      "Sugar",
+      "Water",
+      "Palm and Palm Kernel Oil",
+      "Cocoa Processed With Alkali",
+      "Gelatin",
+      "Natural Flavors",
+      "Cultured Dextrose",
+      "Nonfat Milk",
+      "Soy Lecithin"
     ],
-    seedOilIngredients: ["canola oil", "soybean oil"],
-    allergens: [
-      { name: "Milk", status: "free", note: "No milk ingredients detected (demo)." },
-      { name: "Egg", status: "unknown", note: "Facility data not available (demo)." },
-      { name: "Peanut", status: "free", note: "No peanut ingredients detected (demo)." },
-      { name: "Tree nuts", status: "contains", note: "Contains almond (demo)." },
-      { name: "Soy", status: "may", note: "Soybean oil present; verify processing (demo)." },
-      { name: "Wheat/Gluten", status: "may", note: "Shared lines possible (demo)." },
-      { name: "Sesame", status: "unknown", note: "Not enough data (demo)." },
-      { name: "Fish", status: "free", note: "No fish ingredients detected (demo)." },
-      { name: "Shellfish", status: "free", note: "No shellfish ingredients detected (demo)." }
-    ],
-    facilityHistory: [
-      { date: "2025-11", title: "Facility change", body: "Production moved to a new co-manufacturer (demo)." },
-      { date: "2025-06", title: "Allergen protocol update", body: "Cleaning validation process improved (demo)." },
-      { date: "2024-09", title: "No recalls recorded", body: "No relevant recall events found (demo)." }
-    ]
-  },
-  {
-    id: "sf-oat-bar-choc",
-    productName: "Oat Snack Bar (Chocolate)",
-    brand: "SunField",
-    manufacturer: "SunField Manufacturing",
-    safetyScore: 72,
-    mayContainRisk: "Medium",
-    mayContainWhy: "Mixed signals across similar SKUs (demo).",
-    seedOils: "Not flagged",
-    seedOilsWhy: "No seed oils detected in ingredients (demo).",
-    recalls: "1 recall (last 5 yrs)",
-    recallsWhy: "Single recall event in category history (demo).",
-    ingredients: [
-      "Oats",
-      "Cocoa",
-      "Cane sugar",
-      "Sunflower lecithin",
-      "Salt"
-    ],
+
     seedOilIngredients: [],
+
     allergens: [
-      { name: "Milk", status: "may", note: "Chocolate line may share equipment (demo)." },
-      { name: "Egg", status: "free", note: "No egg ingredients detected (demo)." },
-      { name: "Peanut", status: "may", note: "Shared facility warning (demo)." },
-      { name: "Tree nuts", status: "may", note: "Shared facility warning (demo)." },
-      { name: "Soy", status: "free", note: "No soy ingredients detected (demo)." },
-      { name: "Wheat/Gluten", status: "may", note: "Oats may be processed near wheat (demo)." },
-      { name: "Sesame", status: "unknown", note: "Not enough data (demo)." },
-      { name: "Fish", status: "free", note: "No fish ingredients detected (demo)." },
-      { name: "Shellfish", status: "free", note: "No shellfish ingredients detected (demo)." }
+      { name: "Milk", status: "contains", note: "Official ingredient list includes nonfat milk and whey protein isolate." },
+      { name: "Egg", status: "free", note: "No egg ingredient listed." },
+      { name: "Peanut", status: "may", note: "Official label says may contain peanuts." },
+      { name: "Tree nuts", status: "may", note: "Official label says may contain tree nuts." },
+      { name: "Soy", status: "contains", note: "Official ingredient list includes soy lecithin." },
+      { name: "Wheat/Gluten", status: "free", note: "No wheat ingredient listed on the product page." },
+      { name: "Sesame", status: "unknown", note: "No sesame statement found on the product page." },
+      { name: "Fish", status: "free", note: "No fish ingredient listed." },
+      { name: "Shellfish", status: "free", note: "No shellfish ingredient listed." }
     ],
+
     facilityHistory: [
-      { date: "2025-02", title: "Recall event", body: "Recall recorded for labeling issue (demo)." },
-      { date: "2024-12", title: "Supplier change", body: "Cocoa supplier switched (demo)." }
+      { date: "2022-06", title: "Company recall event", body: "FDA posted a Built Brands recall for Banana Cream Pie Puffs due to possible E. coli risk; the recall was later terminated." }
+    ],
+
+    snapshotMetrics: [
+      { name: "Protein", value: "17g", note: "Official macro listing." },
+      { name: "Calories", value: "140", note: "Official macro listing." },
+      { name: "Sugar", value: "6g", note: "Official macro listing." },
+    ],
+
+    processingMetrics: [
+      { name: "Ultra-processed level", value: "NOVA 4", note: "Based on protein isolates, emulsifier, flavoring, and confection-style formulation." },
+      { name: "Additive load", value: "Moderate", note: "Natural flavors, cultured dextrose, soy lecithin, glycerin, and alkali-processed cocoa add formulation complexity." },
+      { name: "Refined vs whole ratio", value: "Mostly refined/isolated", note: "No obvious whole-food base; formula relies mainly on isolates and processed ingredients." },
+      { name: "Seed oil presence / type", value: "No major seed oils", note: "Palm and palm kernel oil are present; soy lecithin is present." },
+      { name: "Calorie density", value: "Add grams later", }
+    ],
+
+    nutritionMetrics: [
+      { name: "Satiety", value: "Moderate", note: "17g protein helps, but the sweet marshmallow-style format may be less filling than less processed options." },
+      { name: "Protein quality", value: "Mixed", note: "Whey isolate is high quality; collagen is incomplete, so the blend is less complete than pure whey." },
+      { name: "Leucine per serving", value: "~1.2–1.6g est."}
+    ],
+
+    safetyMetrics: [
+      { name: "Heavy metal risk category", value: "Low", note: "No known warning found from reviewed sources; cocoa-based products can still warrant monitoring." },
+      { name: "Recall history/frequency", value: "Limited but non-zero", note: "Public FDA recall found for another Built Puff flavor in 2022." }
+    ],
+
+    companyMetrics: [
+      { name: "Family-owned / founder-led", value: "Founder-led",},
+      { name: "Animal welfare standards", value: "No claim found", note: "No cage-free, pasture-raised, GAP, or similar claims" },
+      { name: "Parent company mapping", value: "BUILT Brands, LLC"}
+    ],
+
+    newsHistory: [
+      { date: "2025-11", title: "New Utah facility", body: "Recent company expansion news highlighted added production and distribution capacity." },
+      { date: "2024-08", title: "Founder visibility", body: "Nick Greer was publicly identified as co-founder/CEO in external coverage." },
+      { date: "2022-06", title: "Recall history", body: "FDA recall posted for Banana Cream Pie Puffs; not this exact coconut SKU." }
     ]
   }
 ];
@@ -149,10 +150,10 @@ function normalize(s) {
 }
 
 function getSearchText(item, filter) {
-  if (filter === "product") return item.productName;
+  if (filter === "product") return `${item.productName} ${item.keywords || ""}`;
   if (filter === "brand") return item.brand;
   if (filter === "manufacturer") return item.manufacturer;
-  return `${item.productName} ${item.brand} ${item.manufacturer}`;
+  return `${item.productName} ${item.brand} ${item.manufacturer} ${item.keywords || ""}`;
 }
 
 function computeRelevance(item, query) {
@@ -184,19 +185,13 @@ function matchesFilter(item, query, filter) {
 function sortItems(items, query) {
   const mode = sortSelect.value;
 
-  if (mode === "scoreDesc") return [...items].sort((a, b) => b.safetyScore - a.safetyScore);
-  if (mode === "scoreAsc") return [...items].sort((a, b) => a.safetyScore - b.safetyScore);
   if (mode === "nameAsc") return [...items].sort((a, b) => a.productName.localeCompare(b.productName));
 
   // relevance default
   return [...items].sort((a, b) => computeRelevance(b, query) - computeRelevance(a, query));
 }
 
-function scoreLabel(n) {
-  if (n >= 85) return "Safe";
-  if (n >= 70) return "Caution";
-  return "Risk";
-}
+
 
 function renderResults(items, query) {
   if (items.length === 0) {
@@ -212,48 +207,37 @@ function renderResults(items, query) {
 
   searchCountEl.textContent = `${items.length} result${items.length === 1 ? "" : "s"}`;
 
-  resultsEl.innerHTML = items
-    .map((p) => {
-      const label = scoreLabel(p.safetyScore);
-      return `
-        <div class="resultCard" role="button" tabindex="0" data-id="${p.id}">
-          <div class="resultTop">
-            <div>
-              <div class="resultTitle">${p.productName}</div>
-              <div class="resultSub">
-                Brand: <strong>${p.brand}</strong> • Manufacturer: <strong>${p.manufacturer}</strong>
-              </div>
-              <div class="badges">
-                <span class="badge">“May contain” risk: ${p.mayContainRisk}</span>
-                <span class="badge">Seed oils: ${p.seedOils}</span>
-                <span class="badge">Recalls: ${p.recalls}</span>
-              </div>
-            </div>
-
-            <div class="scorePill" title="Example Safety Score">
-              <span class="n">${p.safetyScore}</span>
-              <span class="t">${label}</span>
-            </div>
-          </div>
-
-          <div class="miniGrid">
-            <div class="miniBox">
-              <div class="k">Tap for details</div>
-              <div class="v">Full breakdown view</div>
-            </div>
-            <div class="miniBox">
-              <div class="k">Next step</div>
-              <div class="v">Connect real data</div>
-            </div>
-            <div class="miniBox">
-              <div class="k">Roadmap</div>
-              <div class="v">Filters + alerts</div>
+resultsEl.innerHTML = items
+  .map((p) => {
+    return `
+      <div class="resultCard" role="button" tabindex="0" data-id="${p.id}">
+        <div class="resultTop">
+          <div>
+            <div class="resultTitle">${p.productName}</div>
+            <div class="resultSub">
+              Brand: <strong>${p.brand}</strong> • Manufacturer: <strong>${p.manufacturer}</strong>
             </div>
           </div>
         </div>
-      `;
-    })
-    .join("");
+
+        <div class="miniGrid">
+          <div class="miniBox">
+            <div class="k">Open product page</div>
+            <div class="v">See full breakdown</div>
+          </div>
+          <div class="miniBox">
+            <div class="k">Includes</div>
+            <div class="v">Ingredients + allergens</div>
+          </div>
+          <div class="miniBox">
+            <div class="k">Also includes</div>
+            <div class="v">Company + recall history</div>
+          </div>
+        </div>
+      </div>
+    `;
+  })
+  .join("");
 }
 
 // Modal helpers
@@ -270,22 +254,22 @@ function statusText(status) {
   if (status === "free") return "Free from";
   return "Unknown";
 }
-
+function renderMetricCards(items = []) {
+  return items
+    .map((item) => {
+      return `
+        <div class="metricCard">
+          <div class="metricName">${item.name}</div>
+          <div class="metricValue">${item.value}</div>
+          <div class="metricNote">${item.note || ""}</div>
+        </div>
+      `;
+    })
+    .join("");
+}
 function openModal(product) {
   modalTitle.textContent = product.productName;
   modalSub.textContent = `Brand: ${product.brand} • Manufacturer: ${product.manufacturer}`;
-
-  modalScore.textContent = `${product.safetyScore} (${scoreLabel(product.safetyScore)})`;
-  modalScoreHint.textContent = "Composite score (demo). Will reflect your real methodology.";
-
-  modalMayContain.textContent = product.mayContainRisk;
-  modalMayContainHint.textContent = product.mayContainWhy;
-
-  modalSeedOils.textContent = product.seedOils;
-  modalSeedOilsHint.textContent = product.seedOilsWhy;
-
-  modalRecalls.textContent = product.recalls;
-  modalRecallsHint.textContent = product.recallsWhy;
 
   // Ingredients chips (highlight seed oils)
   const seedSet = new Set((product.seedOilIngredients || []).map((s) => normalize(s)));
@@ -296,19 +280,6 @@ function openModal(product) {
     })
     .join("");
 
-  // Allergen matrix
-  modalAllergens.innerHTML = (product.allergens || [])
-    .map((a) => {
-      const cls = statusClass(a.status);
-      return `
-        <div class="allergenCard">
-          <div class="allergenName">${a.name}</div>
-          <div class="allergenStatus ${cls}">${statusText(a.status)}</div>
-          <div class="allergenNote">${a.note || ""}</div>
-        </div>
-      `;
-    })
-    .join("");
 
   // Facility timeline
   modalFacility.innerHTML = (product.facilityHistory || [])
@@ -329,12 +300,35 @@ function openModal(product) {
   reportProductId.value = product.id;
   reportForm.reset();
   reportNote.textContent = "";
+modalProductImage.src = product.image || "";
+modalProductImage.alt = product.productName || "Product image";
 
+modalSnapshot.innerHTML = renderMetricCards(product.snapshotMetrics || []);
+modalProcessing.innerHTML = renderMetricCards(product.processingMetrics || []);
+modalNutrition.innerHTML = renderMetricCards(product.nutritionMetrics || []);
+modalSafetyDetails.innerHTML = renderMetricCards(product.safetyMetrics || []);
+modalCompany.innerHTML = renderMetricCards(product.companyMetrics || []);
+
+modalNews.innerHTML = (product.newsHistory || [])
+  .map((ev) => {
+    return `
+      <div class="event">
+        <div class="eventTop">
+          <div class="eventTitle">${ev.title}</div>
+          <div class="eventDate">${ev.date}</div>
+        </div>
+        <div class="eventBody">${ev.body}</div>
+      </div>
+    `;
+  })
+  .join("");
   modalOverlay.hidden = false;
+document.body.classList.add("modal-open");
 }
 
 function closeModal() {
   modalOverlay.hidden = true;
+  document.body.classList.remove("modal-open");
 }
 
 modalClose.addEventListener("click", closeModal);

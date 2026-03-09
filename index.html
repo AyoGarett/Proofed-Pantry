@@ -51,8 +51,8 @@
           <div class="pill">Beyond-the-label food clarity</div>
           <h1>Know what labels don’t tell you.</h1>
           <p>
-            Proofed Pantry helps you make safer choices with a clear safety score,
-            “may contain” risk clarity, seed oil flags, and recall history — in one clean view.
+            Proofed Pantry helps you make healthier choices with a clear nutritional information not on the package at a glance.
+
           </p>
 
           <div class="heroActions">
@@ -62,8 +62,8 @@
 
           <div class="trustRow">
             <div class="trustItem">
-              <div class="trustNum">Safety</div>
-              <div class="trustLabel">score & risk notes</div>
+              <div class="trustNum">Ingredient Quality</div>
+              <div class="trustLabel">ingredient breakdown notes</div>
             </div>
             <div class="trustItem">
               <div class="trustNum">Seed oils</div>
@@ -76,46 +76,6 @@
           </div>
         </div>
 
-        <div class="heroCard" aria-label="Example card">
-          <div class="cardTop">
-            <div>
-              <div class="cardTitle">Example Product</div>
-              <div class="cardSub">Snack • 1.8 oz</div>
-            </div>
-            <div class="scoreBadge" title="Example Safety Score">
-              <span class="scoreNum">87</span>
-              <span class="scoreWord">Safe</span>
-            </div>
-          </div>
-
-          <div class="cardGrid">
-            <div class="mini">
-              <div class="miniLabel">“May contain” risk</div>
-              <div class="miniValue">Low</div>
-              <div class="miniHint">Based on facility & evidence</div>
-            </div>
-            <div class="mini">
-              <div class="miniLabel">Seed oils</div>
-              <div class="miniValue">Flagged</div>
-              <div class="miniHint">Contains: canola, soybean</div>
-            </div>
-            <div class="mini">
-              <div class="miniLabel">Recall history</div>
-              <div class="miniValue">None</div>
-              <div class="miniHint">No recalls in last 5 years</div>
-            </div>
-            <div class="mini">
-              <div class="miniLabel">Allergens</div>
-              <div class="miniValue">Peanut-free</div>
-              <div class="miniHint">Check cross-contact notes</div>
-            </div>
-          </div>
-
-          <div class="cardFooter">
-            <div class="smallNote">Preview only. Premium unlocks full breakdown + alerts.</div>
-            <a class="link" href="#pricing">Unlock Premium →</a>
-          </div>
-        </div>
       </section>
 <!-- Search -->
 <section id="search" class="section">
@@ -153,12 +113,10 @@
       <div class="rightControls">
         <label class="selectLabel">
           Sort
-          <select id="sortSelect">
-            <option value="relevance" selected>Relevance</option>
-            <option value="scoreDesc">Safety score (high → low)</option>
-            <option value="scoreAsc">Safety score (low → high)</option>
-            <option value="nameAsc">Name (A → Z)</option>
-          </select>
+<select id="sortSelect">
+  <option value="relevance" selected>Relevance</option>
+  <option value="nameAsc">Name (A → Z)</option>
+</select>
         </label>
       </div>
     </div>
@@ -180,7 +138,7 @@
         <div class="cards3">
           <div class="card">
             <h3>Clarity</h3>
-            <p>Turn vague warnings into a simple safety score and plain-English notes.</p>
+            <p>Turn vague warnings into a simple notes.</p>
           </div>
           <div class="card">
             <h3>Transparency</h3>
@@ -201,22 +159,7 @@
         </div>
 
         <div class="featureGrid">
-          <div class="feature">
-            <div class="icon">🛡️</div>
-            <div>
-              <h3>Safety Score</h3>
-              <p>A quick score that summarizes risk, uncertainty, and known signals.</p>
-            </div>
-          </div>
-
-          <div class="feature">
-            <div class="icon">🔎</div>
-            <div>
-              <h3>“May Contain” Reality Check</h3>
-              <p>Separate cautious legal wording from meaningful risk indicators.</p>
-            </div>
-          </div>
-
+        
           <div class="feature">
             <div class="icon">🌿</div>
             <div>
@@ -454,33 +397,39 @@
 
     <div class="modalBody">
       <!-- Quick summary cards -->
-      <div class="modalGrid">
-        <div class="modalBox">
-          <div class="k">Safety score</div>
-          <div class="v" id="modalScore">—</div>
-          <div class="h" id="modalScoreHint">—</div>
-        </div>
-        <div class="modalBox">
-          <div class="k">“May contain” risk</div>
-          <div class="v" id="modalMayContain">—</div>
-          <div class="h" id="modalMayContainHint">—</div>
-        </div>
-        <div class="modalBox">
-          <div class="k">Seed oils</div>
-          <div class="v" id="modalSeedOils">—</div>
-          <div class="h" id="modalSeedOilsHint">—</div>
-        </div>
-        <div class="modalBox">
-          <div class="k">Recall history</div>
-          <div class="v" id="modalRecalls">—</div>
-          <div class="h" id="modalRecallsHint">—</div>
-        </div>
-      </div>
-
+    
       <!-- Two-column product page layout -->
       <div class="productLayout">
         <!-- Left column -->
         <div class="productMain">
+          <div class="panel heroPanel">
+  <div class="productHero">
+    <div class="productImageWrap">
+      <img id="modalProductImage" class="productImage" src="" alt="Product image" />
+    </div>
+
+    <div class="productHeroInfo">
+      <div class="panelTitle">Product snapshot</div>
+      <div class="metricGrid" id="modalSnapshot"></div>
+    </div>
+  </div>
+</div>
+
+<div class="panel">
+  <div class="panelTop">
+    <div class="panelTitle">Processing & ingredient quality</div>
+    <div class="panelHint">How processed and formulation-heavy the product appears.</div>
+  </div>
+  <div class="metricGrid" id="modalProcessing"></div>
+</div>
+
+<div class="panel">
+  <div class="panelTop">
+    <div class="panelTitle">Nutrition functionality</div>
+    <div class="panelHint">Protein usefulness, satiety, and calorie efficiency.</div>
+  </div>
+  <div class="metricGrid" id="modalNutrition"></div>
+</div>
           <div class="panel">
             <div class="panelTop">
               <div class="panelTitle">Ingredients</div>
@@ -491,14 +440,14 @@
 
           <div class="panel">
             <div class="panelTop">
-              <div class="panelTitle">Allergen matrix</div>
-              <div class="panelHint">A clearer view than “may contain” alone (demo).</div>
+              <div class="panelTitle"></div>
+              <div class="panelHint"></div>
             </div>
             <div class="allergenLegend">
-              <span class="legendItem ok">Free from</span>
-              <span class="legendItem warn">May contain</span>
-              <span class="legendItem bad">Contains</span>
-              <span class="legendItem unk">Unknown</span>
+              <span class="legendItem ok"></span>
+              <span class="legendItem warn"></span>
+              <span class="legendItem bad"></span>
+              <span class="legendItem unk"></span>
             </div>
             <div class="allergenGrid" id="modalAllergens"></div>
           </div>
@@ -513,7 +462,29 @@
             </div>
             <div class="timeline" id="modalFacility"></div>
           </div>
+<div class="panel">
+  <div class="panelTop">
+    <div class="panelTitle">Safety & risk</div>
+    <div class="panelHint">Recalls, contaminants, and other risk signals.</div>
+  </div>
+  <div class="metricGrid" id="modalSafetyDetails"></div>
+</div>
 
+<div class="panel">
+  <div class="panelTop">
+    <div class="panelTitle">Company & ethics</div>
+    <div class="panelHint">Ownership, leadership, and sourcing-related context.</div>
+  </div>
+  <div class="metricGrid" id="modalCompany"></div>
+</div>
+
+<div class="panel">
+  <div class="panelTop">
+    <div class="panelTitle">Recent news & recall timeline</div>
+    <div class="panelHint">Public company/product events.</div>
+  </div>
+  <div class="timeline" id="modalNews"></div>
+</div>
           <div class="panel">
             <div class="panelTop">
               <div class="panelTitle">Report an issue</div>
@@ -559,3 +530,6 @@
     </div>
   </div>
 </div>
+<script src="script.js"></script>
+</body>
+</html>
